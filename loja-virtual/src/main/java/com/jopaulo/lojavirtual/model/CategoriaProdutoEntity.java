@@ -1,8 +1,7 @@
 package com.jopaulo.lojavirtual.model;
 
+import java.io.Serializable;
 import java.util.Objects;
-
-import org.springframework.security.core.GrantedAuthority;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -13,23 +12,18 @@ import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "TB_ACESSO")
-@SequenceGenerator(name = "SEQ_ACESSO", sequenceName = "SEQ_ACESSO", allocationSize = 1, initialValue = 1)
-public class Acesso implements GrantedAuthority {
-
-	private static final long serialVersionUID = 7398539865357826189L;
+@Table(name = "TB_CATEGORIA_PRODUTO")
+@SequenceGenerator(name = "SEQ_CATEGORIA_PRODUTO", sequenceName = "SEQ_CATEGORIA_PRODUTO", allocationSize = 1, initialValue = 1)
+public class CategoriaProdutoEntity implements Serializable {
 	
+	private static final long serialVersionUID = -3811389864336069834L;
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_ACESSO")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_CATEGORIA_PRODUTO")
 	private Long id;
 	
 	@Column(nullable = false)
-	private String descricao;
-
-	@Override
-	public String getAuthority() {
-		return this.descricao;
-	}
+	private String nomeDescricao;
 
 	public Long getId() {
 		return id;
@@ -39,12 +33,12 @@ public class Acesso implements GrantedAuthority {
 		this.id = id;
 	}
 
-	public String getDescricao() {
-		return descricao;
+	public String getNomeDescricao() {
+		return nomeDescricao;
 	}
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+	public void setNomeDescricao(String nomeDescricao) {
+		this.nomeDescricao = nomeDescricao;
 	}
 
 	@Override
@@ -60,8 +54,8 @@ public class Acesso implements GrantedAuthority {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Acesso other = (Acesso) obj;
+		CategoriaProdutoEntity other = (CategoriaProdutoEntity) obj;
 		return Objects.equals(id, other.id);
 	}
-
+	
 }
