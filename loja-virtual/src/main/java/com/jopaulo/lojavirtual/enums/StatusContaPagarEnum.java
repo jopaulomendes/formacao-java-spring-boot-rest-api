@@ -1,16 +1,15 @@
 package com.jopaulo.lojavirtual.enums;
 
-public enum StatusContaReceberEnum {
+public enum StatusContaPagarEnum {
 
 	COMBRANCA("Pagar"),
 	VENCIDA("Vencida"),
 	ABERTA("Aberta"),
-	QUITADA("Quitada"),
-	NEGOCIADA("Negociada");
+	QUITADA("Quitada");
 	
 	private String descricao;
 
-	private StatusContaReceberEnum(String descricao) {
+	private StatusContaPagarEnum(String descricao) {
 		this.descricao = descricao;
 	}
 
