@@ -19,7 +19,7 @@ import jakarta.persistence.SequenceGenerator;
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @SequenceGenerator(name = "SEQ_PESSOA", sequenceName = "SEQ_PESSOA", initialValue = 1, allocationSize = 1)
-public abstract class Pessoa implements Serializable{
+public abstract class PessoaEntity implements Serializable{
 
 	private static final long serialVersionUID = -1714742924009010896L;
 
@@ -81,7 +81,7 @@ public abstract class Pessoa implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Pessoa other = (Pessoa) obj;
+		PessoaEntity other = (PessoaEntity) obj;
 		return Objects.equals(id, other.id);
 	}
 

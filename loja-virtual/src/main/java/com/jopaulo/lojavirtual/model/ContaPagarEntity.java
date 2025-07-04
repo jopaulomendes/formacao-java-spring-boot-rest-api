@@ -41,15 +41,15 @@ public class ContaPagarEntity implements Serializable {
 	
 	private BigDecimal valorDesconto;
 	
-	@ManyToOne(targetEntity = Pessoa.class)
+	@ManyToOne(targetEntity = PessoaEntity.class)
 	@JoinColumn(name = "pessoa_id", nullable = false, 
 		foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "pessoa_fk"))
-	private Pessoa pessoa;
+	private PessoaEntity pessoa;
 	
-	@ManyToOne(targetEntity = Pessoa.class)
+	@ManyToOne(targetEntity = PessoaEntity.class)
 	@JoinColumn(name = "pessoa_fornecedor_id", nullable = false, 
 		foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "pessoa_fornecedor_fk"))
-	private Pessoa pessoaFornecedor;
+	private PessoaEntity pessoaFornecedor;
 
 	public Long getId() {
 		return id;
@@ -99,11 +99,11 @@ public class ContaPagarEntity implements Serializable {
 		this.valorDesconto = valorDesconto;
 	}
 
-	public Pessoa getPessoa() {
+	public PessoaEntity getPessoa() {
 		return pessoa;
 	}
 
-	public void setPessoa(Pessoa pessoa) {
+	public void setPessoa(PessoaEntity pessoa) {
 		this.pessoa = pessoa;
 	}
 
@@ -124,11 +124,11 @@ public class ContaPagarEntity implements Serializable {
 		return Objects.equals(id, other.id);
 	}
 
-	public Pessoa getPessoaFornecedor() {
+	public PessoaEntity getPessoaFornecedor() {
 		return pessoaFornecedor;
 	}
 
-	public void setPessoaFornecedor(Pessoa pessoaFornecedor) {
+	public void setPessoaFornecedor(PessoaEntity pessoaFornecedor) {
 		this.pessoaFornecedor = pessoaFornecedor;
 	}
 	

@@ -10,7 +10,7 @@ import jakarta.persistence.TemporalType;
 
 @Entity
 @Table(name = "TB_PESSOA_FISICA")
-public class PessoaFisica extends Pessoa {
+public class PessoaFisicaEntity extends PessoaEntity {
 
 	private static final long serialVersionUID = 1997631109139335243L;
 	

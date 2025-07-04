@@ -6,7 +6,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "TB_PESSOA_JURIDICA")
-public class PessoaJuridica extends Pessoa {
+public class PessoaJuridicaEntity extends PessoaEntity {
 
 	private static final long serialVersionUID = -1611706296657066939L;
 	
