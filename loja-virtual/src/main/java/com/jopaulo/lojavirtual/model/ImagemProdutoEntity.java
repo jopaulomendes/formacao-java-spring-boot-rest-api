@@ -18,7 +18,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "TB_IMAGEM_PRODUTO")
 @SequenceGenerator(name = "SEQ_IMAGEM_PRODUTO", sequenceName = "SEQ_IMAGEM_PRODUTO", allocationSize = 1, initialValue = 1)
-public class ImagemProduto implements Serializable{
+public class ImagemProdutoEntity implements Serializable{
 
 	private static final long serialVersionUID = 7087467941584315045L;
 	
@@ -88,7 +88,7 @@ public class ImagemProduto implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		ImagemProduto other = (ImagemProduto) obj;
+		ImagemProdutoEntity other = (ImagemProdutoEntity) obj;
 		return Objects.equals(id, other.id);
 	}
 
