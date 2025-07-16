@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.ConstraintMode;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -16,6 +17,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
@@ -34,12 +36,26 @@ public class UsuarioEntity implements UserDetails{
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_USUARIO")
 	private Long id;
 	
+	@Column(nullable = false)
 	private String login;
 	
+	@Column(nullable = false)
 	private String senha;
 	
+	@Column(nullable = false)
 	@Temporal(TemporalType.DATE)
 	private Date dataAtualSenha;
+	
+	@ManyToOne(targetEntity = PessoaEntity.class)
+	@JoinColumn(
+			name = "pessoa_id", 
+			nullable = false, 
+		    foreignKey = @ForeignKey(
+	    		value = ConstraintMode.CONSTRAINT, 
+	    		name = "pessoa_fk"
+			)
+	)
+	private PessoaEntity pessoa;
 	
 	@OneToMany(fetch = FetchType.LAZY)
 	@JoinTable(
@@ -84,6 +100,14 @@ public class UsuarioEntity implements UserDetails{
 	@Override
 	public String getUsername() {
 		return this.login;
+	}
+
+	public PessoaEntity getPessoa() {
+		return pessoa;
+	}
+
+	public void setPessoa(PessoaEntity pessoa) {
+		this.pessoa = pessoa;
 	}
 
 }

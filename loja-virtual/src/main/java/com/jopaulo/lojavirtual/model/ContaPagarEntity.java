@@ -5,8 +5,13 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Objects;
 
+import com.jopaulo.lojavirtual.enums.StatusContaPagarEnum;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.ConstraintMode;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.ForeignKey;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -29,17 +34,24 @@ public class ContaPagarEntity implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_CONTA_PAGAR")
 	private Long id;
 	
+	@Column(nullable = false)
 	private String descricao;
 	
+	@Column(nullable = false)
 	@Temporal(TemporalType.DATE)
 	private Date dataVencimento;
 
 	@Temporal(TemporalType.DATE)
 	private Date dataPagamento;
 	
+	@Column(nullable = false)
 	private BigDecimal valorTotal;
 	
 	private BigDecimal valorDesconto;
+	
+	@Column(nullable = false)
+	@Enumerated(EnumType.STRING)
+	private StatusContaPagarEnum contaPagar;
 	
 	@ManyToOne(targetEntity = PessoaEntity.class)
 	@JoinColumn(name = "pessoa_id", nullable = false, 
@@ -130,6 +142,14 @@ public class ContaPagarEntity implements Serializable {
 
 	public void setPessoaFornecedor(PessoaEntity pessoaFornecedor) {
 		this.pessoaFornecedor = pessoaFornecedor;
+	}
+
+	public StatusContaPagarEnum getContaPagar() {
+		return contaPagar;
+	}
+
+	public void setContaPagar(StatusContaPagarEnum contaPagar) {
+		this.contaPagar = contaPagar;
 	}
 	
 }

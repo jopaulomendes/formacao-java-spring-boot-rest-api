@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Objects;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -25,14 +26,16 @@ public class CupomDescontoEntity implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_CUPOM_DESCONTO")
 	private Long id;
 	
-	private String descricao;
+	@Column(nullable = false)
+	private String codigoDesconto;
 	
 	private BigDecimal valorReal;
 	
 	private BigDecimal valorPorcentagem;
 	
+	@Column(nullable = false)
 	@Temporal(TemporalType.DATE)
-	private Date dataV;
+	private Date dataValidade;
 
 	public Long getId() {
 		return id;
@@ -40,14 +43,6 @@ public class CupomDescontoEntity implements Serializable {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public String getDescricao() {
-		return descricao;
-	}
-
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
 	}
 
 	public BigDecimal getValorReal() {
@@ -66,14 +61,6 @@ public class CupomDescontoEntity implements Serializable {
 		this.valorPorcentagem = valorPorcentagem;
 	}
 
-	public Date getDataV() {
-		return dataV;
-	}
-
-	public void setDataV(Date dataV) {
-		this.dataV = dataV;
-	}
-
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -89,5 +76,21 @@ public class CupomDescontoEntity implements Serializable {
 			return false;
 		CupomDescontoEntity other = (CupomDescontoEntity) obj;
 		return Objects.equals(id, other.id);
+	}
+
+	public String getCodigoDesconto() {
+		return codigoDesconto;
+	}
+
+	public void setCodigoDesconto(String codigoDesconto) {
+		this.codigoDesconto = codigoDesconto;
+	}
+
+	public Date getDataValidade() {
+		return dataValidade;
+	}
+
+	public void setDataValidade(Date dataValidade) {
+		this.dataValidade = dataValidade;
 	}
 }

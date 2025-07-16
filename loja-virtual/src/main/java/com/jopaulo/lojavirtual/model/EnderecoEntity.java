@@ -54,6 +54,7 @@ public class EnderecoEntity implements Serializable {
 	@JoinColumn(name = "pessoa_id", nullable = false, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "pessoa_fk"))
 	private PessoaEntity pessoa;
 	
+	@Column(nullable = false)
 	@Enumerated(EnumType.STRING)
 	private TipoEnderecoEnum tipoEndereco;
 

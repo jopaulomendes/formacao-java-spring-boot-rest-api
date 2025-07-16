@@ -26,10 +26,10 @@ public class ImagemProdutoEntity implements Serializable{
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_IMAGEM_PRODUTO")
 	private Long id;
 	
-	@Column(columnDefinition = "text")
+	@Column(columnDefinition = "text", nullable = false)
 	private String imagemOriginal;
 	
-	@Column(columnDefinition = "text")
+	@Column(columnDefinition = "text", nullable = false)
 	private String imagemMiniatura;
 	
 	@ManyToOne
